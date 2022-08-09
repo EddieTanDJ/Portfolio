@@ -111,14 +111,25 @@ textarea {
       .heading-sec__main::after {
         top: calc(100% + 1.2rem); } }
 
+.heading_section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10rem;
+  margin: 10px;
+}
+
+.image_about {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
 .heading-sec__sub {
-  display: block;
-  text-align: center;
+  text-align: justify;
   color: #777;
   font-size: 2rem;
   font-weight: 500;
-  max-width: 80rem;
-  margin: auto;
   line-height: 1.6; }
   @media only screen and (max-width: 37.5em) {
     .heading-sec__sub {
