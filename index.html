@@ -44,6 +44,9 @@
             <li class="header__link-wrapper">
               <a href="./index.html#contact" class="header__link"> Contact </a>
             </li>
+            <li class="header__link-wrapper">
+              <a href="https://drive.google.com/file/d/1Lh3dDZN3ED8GnK5IpQqKgeF76UDDwnst/view?usp=sharing" class="header__link"> Resume </a>
+            </li>
           </ul>
           <div class="header__main-ham-menu-cont">
             <img
@@ -296,14 +299,13 @@
     <section id="contact" class="contact sec-pad dynamicBg">
       <div class="main-container">
         <h2 class="heading heading-sec heading-sec__mb-med">
-          <span class="heading-sec__main heading-sec__main--lt">Contact</span>
+          <span class="heading-sec__main heading-sec__main--lt">Contact Me</span>
           <span class="heading-sec__sub heading-sec__sub--lt">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic facilis
-            tempora explicabo quae quod deserunt eius sapiente
+            Feel free to contact me by filling in the form below!
           </span>
         </h2>
         <div class="contact__form-container">
-          <form action="#" class="contact__form">
+          <form action="https://api.web3forms.com/submit" class="contact__form" method="POST">
             <div class="contact__form-field">
               <label class="contact__form-label" for="name">Name</label>
               <input
@@ -320,7 +322,7 @@
               <input
                 required
                 placeholder="Enter Your Email"
-                type="text"
+                type="email"
                 class="contact__form-input"
                 name="email"
                 id="email"
@@ -338,6 +340,12 @@
                 id="message"
               ></textarea>
             </div>
+            <input type="hidden" name="access_key" value="ab6bb530-0c92-4759-ae15-a4c83146458f">
+            <input type="hidden" name="subject" value="Portfolio Contact Form">
+            <input type="hidden" name="redirect" value="https://eddietandj.github.io/Portfolio/">
+            <input type="checkbox" name="botcheck" id="" style="display: none;">
+            <input type="hidden" name="from_name" value="Eddie Portfolio">
+
             <button type="submit" class="btn btn--theme contact__btn">
               Submit
             </button>
