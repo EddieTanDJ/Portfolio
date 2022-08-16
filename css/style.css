@@ -333,7 +333,7 @@ textarea {
       color: grey;
       max-width: 60rem;
       line-height: 1.7;
-      margin-bottom: 3rem; 
+      margin-bottom: 2rem; 
       text-align: justify;}
       @media only screen and (max-width: 37.5em) {
         .projects__row-content-desc {
@@ -678,7 +678,8 @@ textarea {
 
 .skills {
   display: flex;
-  flex-wrap: wrap; }
+  flex-wrap: wrap;
+  margin-bottom: 1rem;}
   .skills__skill {
     padding: 1rem 2rem;
     margin-bottom: 1.5rem;
