@@ -810,3 +810,7 @@ Special thanks to [Jacobo Martínez](https://github.com/cobidev) for inspiring m
 ## License 📄
 
 This project is licensed under the  **GPL-3.0** License - see the [LICENSE](LICENSE) file for details
+
+## Credits
+
+- https://github.com/rammcodes/Dopefolio for the template
