@@ -1,3 +1,5 @@
+@use 'mixins' as *;
+@use 'variables' as *;
 .heading-primary {
   font-size: 6rem;
   text-transform: uppercase;

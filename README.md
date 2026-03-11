@@ -122,11 +122,11 @@ $ npm run compile:scss
 
 Once you run `npm run compile:scss`, then open the `index.html` inside your favorite browser or using the live server extension.
 
-<br>
+Using npx:
 
----
-
-<br>
+```bash
+npx serve
+```
 
 ## Template Instructions:
 
@@ -810,3 +810,7 @@ Special thanks to [Jacobo Martínez](https://github.com/cobidev) for inspiring m
 ## License 📄
 
 This project is licensed under the  **GPL-3.0** License - see the [LICENSE](LICENSE) file for details
+
+## Credits
+
+- https://github.com/rammcodes/Dopefolio for the template

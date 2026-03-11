@@ -1,3 +1,5 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
 .home-hero {
   color: #fff;
   background: linear-gradient(
@@ -123,6 +125,15 @@
       }
     }
   }
+  .image_about {
+    width: 100%;
+    max-width: 40rem;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    border-radius: $commonBorderRadius;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
 }
 
 .projects {
@@ -154,6 +165,15 @@
       display: block;
       object-fit: cover;
     }
+    // --- PASTE THIS NEW BLOCK HERE ---
+    .ezhr_project-img {
+      width: 100%;       // Force it to fit the container width
+      display: block;    // Remove extra space below image
+      object-fit: contain; // CRITICAL: Shows full image without cropping (perfect for phone screenshots)
+      max-height: 60rem; // Optional: Limits height so it doesn't take up the whole screen
+      margin: 0 auto;    // Centers the image if it's narrower than the container
+    }
+
     &-content {
       padding: 2rem 0;
       display: flex;
@@ -179,6 +199,7 @@
         max-width: 60rem;
         line-height: 1.7;
         margin-bottom: 3rem;
+        text-align: justify;
         @include respond(phone) {
           font-size: 1.7rem;
         }

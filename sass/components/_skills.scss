@@ -1,6 +1,9 @@
+@use '../abstracts/variables' as *;
+@use '../abstracts/mixins' as *;
 .skills {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 3rem;
   &__skill {
     padding: 1rem 2rem;
     margin-bottom: 1.5rem;
