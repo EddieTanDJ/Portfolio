@@ -1,0 +1,82 @@
+import { render, screen, within } from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import App from './App'
+import { experiences, projects } from './data/content'
+
+describe('App', () => {
+  it('renders the main portfolio sections', () => {
+    render(<App />)
+
+    expect(document.querySelector('#about')).toBeInTheDocument()
+    expect(document.querySelector('#skills')).toBeInTheDocument()
+    expect(document.querySelector('#experience')).toBeInTheDocument()
+    expect(document.querySelector('#projects')).toBeInTheDocument()
+    expect(document.querySelector('#contact')).toBeInTheDocument()
+  })
+
+  it('renders experience and project data from the content module', () => {
+    render(<App />)
+
+    experiences.forEach((item) => {
+      expect(screen.getByText(item.role)).toBeInTheDocument()
+    })
+
+    projects.forEach((project) => {
+      expect(screen.getByText(project.title)).toBeInTheDocument()
+    })
+  })
+
+  it('includes anchor navigation for key sections', () => {
+    render(<App />)
+
+    expect(screen.getByRole('link', { name: 'About' })).toHaveAttribute('href', '#about')
+    expect(screen.getByRole('link', { name: 'Projects' })).toHaveAttribute('href', '#projects')
+    expect(screen.getByRole('link', { name: 'Contact' })).toHaveAttribute('href', '#contact')
+  })
+
+  it('renders the contact form fields and submit button', () => {
+    render(<App />)
+
+    expect(screen.getByLabelText(/name/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/email/i)).toBeInTheDocument()
+    expect(screen.getByLabelText(/message/i)).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: /send message/i })).toBeInTheDocument()
+  })
+
+  it('toggles the mobile menu', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    const toggle = screen.getByRole('button', { name: /toggle navigation menu/i })
+    await user.click(toggle)
+
+    const mobileNav = screen.getByRole('navigation', { name: /mobile/i })
+    expect(mobileNav).toBeInTheDocument()
+
+    await user.click(within(mobileNav).getByRole('link', { name: 'About' }))
+
+    expect(screen.queryByRole('navigation', { name: /mobile/i })).not.toBeInTheDocument()
+  })
+
+  it('adds secure rel attributes to external links', () => {
+    render(<App />)
+
+    const resumeLinks = screen.getAllByRole('link', { name: /resume/i })
+    resumeLinks.forEach((link) => {
+      expect(link).toHaveAttribute('rel', expect.stringContaining('noopener'))
+      expect(link).toHaveAttribute('rel', expect.stringContaining('noreferrer'))
+    })
+  })
+
+  it('toggles between dark and light mode and persists the choice', async () => {
+    const user = userEvent.setup()
+    render(<App />)
+
+    expect(document.documentElement.dataset.theme).toBe('dark')
+
+    await user.click(screen.getAllByRole('button', { name: /switch to light mode/i })[0])
+
+    expect(document.documentElement.dataset.theme).toBe('light')
+    expect(window.localStorage.getItem('portfolio-theme')).toBe('light')
+  })
+})
