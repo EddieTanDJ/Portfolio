@@ -1,15 +1,15 @@
 import { SectionHeading } from './SectionHeading'
-import { SURFACE_STYLES, isDarkTheme } from '../lib/theme'
+import { SURFACE_STYLES } from '../lib/theme'
+import { useTheme } from '../context/ThemeContext'
 
-export function Projects({ items, theme }) {
-  const isDark = isDarkTheme(theme)
+export function Projects({ items }) {
+  const { isDark } = useTheme()
   return (
     <section id="projects" className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
       <SectionHeading
         eyebrow="Selected Work"
         title="Projects that combine curiosity, engineering, and practical problem solving."
         description="A mix of personal and collaborative work across mobile, web, AI, and enterprise-flavored products."
-        theme={theme}
       />
       <div className="mt-12 grid gap-8">
         {items.map((project, index) => (
@@ -26,7 +26,7 @@ export function Projects({ items, theme }) {
               />
             </div>
             <div className={`flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-gold">Project {index + 1}</p>
+              <p className={`text-sm font-semibold uppercase tracking-[0.3em] ${isDark ? 'text-gold' : 'text-ink'}`}>Project {index + 1}</p>
               <h3 className={`mt-3 font-display text-4xl ${isDark ? SURFACE_STYLES.text.dark : SURFACE_STYLES.text.light}`}>{project.title}</h3>
               <p className={`mt-4 text-lg leading-8 ${isDark ? SURFACE_STYLES.mutedText.dark : SURFACE_STYLES.mutedText.light}`}>{project.description}</p>
               <div className="mt-6 flex flex-wrap gap-3">

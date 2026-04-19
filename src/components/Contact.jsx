@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react'
 import { SectionHeading } from './SectionHeading'
-import { SURFACE_STYLES, isDarkTheme } from '../lib/theme'
+import { SURFACE_STYLES } from '../lib/theme'
+import { useTheme } from '../context/ThemeContext'
 
 const initialFormState = {
   name: '',
@@ -8,10 +9,10 @@ const initialFormState = {
   message: '',
 }
 
-export function Contact({ formConfig, theme }) {
+export function Contact({ formConfig }) {
   const [values, setValues] = useState(initialFormState)
   const [errors, setErrors] = useState({})
-  const isDark = isDarkTheme(theme)
+  const { isDark } = useTheme()
 
   const isValid = useMemo(() => Object.keys(errors).length === 0, [errors])
 
@@ -57,7 +58,6 @@ export function Contact({ formConfig, theme }) {
             eyebrow="Contact"
             title="Let&apos;s build something useful together."
             description="If you have an opportunity, collaboration idea, or product challenge in mind, send me a message."
-            theme={theme}
           />
           <div className={`mt-8 space-y-4 text-base leading-7 ${isDark ? SURFACE_STYLES.mutedText.dark : SURFACE_STYLES.mutedText.light}`}>
             <p>I&apos;m especially interested in practical software work where good engineering improves everyday operations.</p>
@@ -80,7 +80,6 @@ export function Contact({ formConfig, theme }) {
             value={values.name}
             error={errors.name}
             required
-            theme={theme}
             onChange={handleChange}
           />
           <Field
@@ -92,7 +91,6 @@ export function Contact({ formConfig, theme }) {
             value={values.email}
             error={errors.email}
             required
-            theme={theme}
             onChange={handleChange}
           />
           <Field
@@ -104,13 +102,12 @@ export function Contact({ formConfig, theme }) {
             value={values.message}
             error={errors.message}
             required
-            theme={theme}
             onChange={handleChange}
           />
 
           <button
             type="submit"
-            className="inline-flex w-fit items-center justify-center rounded-full bg-gold px-7 py-4 text-sm font-semibold uppercase tracking-[0.28em] text-night transition hover:-translate-y-0.5 hover:bg-clay hover:text-sand disabled:cursor-not-allowed disabled:opacity-70"
+            className={`inline-flex w-fit items-center justify-center rounded-full px-7 py-4 text-sm font-semibold uppercase tracking-[0.28em] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70 ${isDark ? 'bg-gold text-night hover:bg-clay hover:text-sand' : 'bg-ink text-sand hover:bg-ink/90'}`}
             disabled={!isValid && Object.values(values).some((value) => value)}
           >
             Send Message
@@ -121,9 +118,9 @@ export function Contact({ formConfig, theme }) {
   )
 }
 
-function Field({ as = 'input', error, id, label, theme, ...props }) {
+function Field({ as = 'input', error, id, label, ...props }) {
   const Component = as
-  const isDark = isDarkTheme(theme)
+  const { isDark } = useTheme()
 
   return (
     <div>

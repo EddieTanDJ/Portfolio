@@ -1,8 +1,9 @@
 import { SectionHeading } from './SectionHeading'
-import { SURFACE_STYLES, isDarkTheme } from '../lib/theme'
+import { SURFACE_STYLES } from '../lib/theme'
+import { useTheme } from '../context/ThemeContext'
 
-export function Skills({ items, theme }) {
-  const isDark = isDarkTheme(theme)
+export function Skills({ items }) {
+  const { isDark } = useTheme()
   return (
     <section id="skills" className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
       <div
@@ -12,7 +13,6 @@ export function Skills({ items, theme }) {
           eyebrow="Capabilities"
           title="A toolkit built across enterprise systems, product delivery, and full-stack craft."
           description="These are the capabilities I reach for most often when shipping software that has to work well in real organizations."
-          theme={theme}
         />
         <div className="mt-10 flex flex-wrap gap-3">
           {items.map((skill) => (

@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import { About } from './components/About'
 import { Contact } from './components/Contact'
 import { Experience } from './components/Experience'
@@ -8,27 +7,11 @@ import { Hero } from './components/Hero'
 import { Projects } from './components/Projects'
 import { Skills } from './components/Skills'
 import { aboutParagraphs, contactForm, experiences, hero, navItems, projects, skills, socialLinks } from './data/content'
-import { APP_BACKGROUNDS, THEME_KEY, THEMES, isDarkTheme, nextTheme } from './lib/theme'
+import { APP_BACKGROUNDS } from './lib/theme'
+import { useTheme } from './context/ThemeContext'
 
 function App() {
-  const [theme, setTheme] = useState(() => {
-    if (typeof window === 'undefined') {
-      return THEMES.dark
-    }
-
-    return window.localStorage.getItem(THEME_KEY) ?? THEMES.dark
-  })
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme
-    window.localStorage.setItem(THEME_KEY, theme)
-  }, [theme])
-
-  const toggleTheme = () => {
-    setTheme((current) => nextTheme(current))
-  }
-
-  const isDark = isDarkTheme(theme)
+  const { isDark, theme } = useTheme()
   const background = isDark ? APP_BACKGROUNDS.dark : APP_BACKGROUNDS.light
 
   return (
@@ -50,18 +33,16 @@ function App() {
         navItems={navItems}
         resumeUrl={hero.resumeUrl}
         profileImage={hero.profileImage}
-        theme={theme}
-        onToggleTheme={toggleTheme}
       />
       <main>
-        <Hero hero={hero} socialLinks={socialLinks} theme={theme} />
-        <About paragraphs={aboutParagraphs} theme={theme} />
-        <Skills items={skills} theme={theme} />
-        <Experience items={experiences} theme={theme} />
-        <Projects items={projects} theme={theme} />
-        <Contact formConfig={contactForm} theme={theme} />
+        <Hero hero={hero} socialLinks={socialLinks} />
+        <About paragraphs={aboutParagraphs} />
+        <Skills items={skills} />
+        <Experience items={experiences} />
+        <Projects items={projects} />
+        <Contact formConfig={contactForm} />
       </main>
-      <Footer socialLinks={socialLinks} theme={theme} />
+      <Footer socialLinks={socialLinks} />
     </div>
   )
 }

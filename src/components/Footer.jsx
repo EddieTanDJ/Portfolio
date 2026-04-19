@@ -1,7 +1,7 @@
-import { isDarkTheme } from '../lib/theme'
+import { useTheme } from '../context/ThemeContext'
 
-export function Footer({ socialLinks, theme }) {
-  const isDark = isDarkTheme(theme)
+export function Footer({ socialLinks }) {
+  const { isDark } = useTheme()
   return (
     <footer className={`border-t px-6 py-10 lg:px-10 ${isDark ? 'border-white/10 bg-ink text-sand' : 'border-ink/10 bg-ink text-sand'}`}>
       <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-end md:justify-between">

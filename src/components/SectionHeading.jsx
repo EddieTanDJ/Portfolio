@@ -1,7 +1,8 @@
-import { SURFACE_STYLES, isDarkTheme } from '../lib/theme'
+import { SURFACE_STYLES } from '../lib/theme'
+import { useTheme } from '../context/ThemeContext'
 
-export function SectionHeading({ eyebrow, title, description, invert = false, theme = 'dark' }) {
-  const isDark = isDarkTheme(theme)
+export function SectionHeading({ eyebrow, title, description, invert = false }) {
+  const { isDark } = useTheme()
   const textColor = invert || isDark ? SURFACE_STYLES.text.dark : SURFACE_STYLES.text.light
   const mutedColor = invert || isDark ? SURFACE_STYLES.mutedText.dark : SURFACE_STYLES.mutedText.light
 

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
-import { SURFACE_STYLES, isDarkTheme } from '../lib/theme'
+import { SURFACE_STYLES } from '../lib/theme'
+import { useTheme } from '../context/ThemeContext'
 
-export function Hero({ hero, socialLinks, theme }) {
+export function Hero({ hero, socialLinks }) {
   const [activeRole, setActiveRole] = useState(0)
-  const isDark = isDarkTheme(theme)
+  const { isDark } = useTheme()
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -17,7 +18,7 @@ export function Hero({ hero, socialLinks, theme }) {
     <section id="home" className="mx-auto max-w-7xl px-6 pb-24 pt-16 lg:px-10 lg:pb-28 lg:pt-24">
       <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
         <div className="space-y-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.4em] text-gold">Engineering with calm precision</p>
+          <p className={`text-sm font-semibold uppercase tracking-[0.4em] ${isDark ? 'text-gold' : 'text-ink'}`}>Engineering with calm precision</p>
           <div className="space-y-6">
             <h1 className={`font-display text-6xl leading-[0.92] sm:text-7xl lg:text-8xl ${isDark ? SURFACE_STYLES.text.dark : SURFACE_STYLES.text.light}`}>
               {hero.title}
@@ -31,7 +32,7 @@ export function Hero({ hero, socialLinks, theme }) {
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
             <a
               href={hero.ctaHref}
-              className="inline-flex items-center justify-center rounded-full bg-gold px-7 py-4 text-sm font-semibold uppercase tracking-[0.28em] text-night transition hover:-translate-y-0.5 hover:bg-clay hover:text-sand"
+              className={`inline-flex items-center justify-center rounded-full px-7 py-4 text-sm font-semibold uppercase tracking-[0.28em] transition hover:-translate-y-0.5 ${isDark ? 'bg-gold text-night hover:bg-clay hover:text-sand' : 'bg-ink text-sand hover:bg-ink/90'}`}
             >
               {hero.ctaLabel}
             </a>
@@ -47,7 +48,7 @@ export function Hero({ hero, socialLinks, theme }) {
 
           <div className={`rounded-[2rem] border p-6 shadow-card backdrop-blur ${isDark ? SURFACE_STYLES.section.dark : SURFACE_STYLES.section.light}`}>
             <p className={`text-sm uppercase tracking-[0.3em] ${isDark ? SURFACE_STYLES.eyebrowText.dark : SURFACE_STYLES.eyebrowText.light}`}>I am a</p>
-            <p className="mt-3 font-display text-4xl text-clay transition-all duration-300">{hero.roles[activeRole]}</p>
+            <p className={`mt-3 font-display text-4xl transition-all duration-300 ${isDark ? 'text-clay' : 'text-ink'}`}>{hero.roles[activeRole]}</p>
           </div>
         </div>
 

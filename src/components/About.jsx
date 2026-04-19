@@ -1,8 +1,9 @@
 import { SectionHeading } from './SectionHeading'
-import { SURFACE_STYLES, isDarkTheme } from '../lib/theme'
+import { SURFACE_STYLES } from '../lib/theme'
+import { useTheme } from '../context/ThemeContext'
 
-export function About({ paragraphs, theme }) {
-  const isDark = isDarkTheme(theme)
+export function About({ paragraphs }) {
+  const { isDark } = useTheme()
   return (
     <section id="about" className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
       <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
@@ -11,7 +12,6 @@ export function About({ paragraphs, theme }) {
             eyebrow="About"
             title="A builder who likes elegant systems and useful outcomes."
             description="I care about the quality of the system behind the interface just as much as the experience in front of it."
-            theme={theme}
           />
         </div>
 
@@ -26,7 +26,7 @@ export function About({ paragraphs, theme }) {
           ))}
           <a
             href="#contact"
-            className="inline-flex w-fit items-center gap-3 rounded-full border border-gold/40 bg-gold/10 px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] text-gold transition hover:bg-gold hover:text-night"
+            className={`inline-flex w-fit items-center gap-3 rounded-full border px-6 py-3 text-sm font-semibold uppercase tracking-[0.25em] transition hover:bg-gold hover:text-night ${isDark ? 'border-gold/40 bg-gold/10 text-gold' : 'border-ink/20 bg-ink/10 text-ink hover:border-gold'}`}
           >
             Let&apos;s connect
           </a>
