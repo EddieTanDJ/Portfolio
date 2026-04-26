@@ -111,7 +111,12 @@ export function Hero({ hero, socialLinks }) {
                   rel="noreferrer noopener"
                   className={`flex items-center gap-3 rounded-2xl border px-4 py-3 text-sm font-semibold transition hover:-translate-y-0.5 hover:border-gold ${isDark ? 'border-white/10 bg-night/80 text-sand' : 'border-ink/10 bg-sand text-ink'}`}
                 >
-                  <img src={link.icon} alt="" aria-hidden="true" className="h-5 w-5 object-contain" />
+                  <img 
+                    src={link.icon} 
+                    alt="" 
+                    aria-hidden="true" 
+                    className={`h-5 w-5 object-contain ${!isDark && link.label !== 'Email' ? 'brightness-0 grayscale' : ''}`} 
+                  />
                   {link.label}
                 </a>
               ))}

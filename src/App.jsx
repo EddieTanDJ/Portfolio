@@ -37,9 +37,9 @@ function App() {
       <main>
         {/* Hero section */}
         <Hero hero={hero} socialLinks={socialLinks} />
-        {/* About section/}
+        {/* About section */}
         <About paragraphs={aboutParagraphs} />
-        {/* Skills section*/}
+        {/* Skills section */}
         <Skills items={skills} />
         {/* Experience section*/}
         <Experience items={experiences} />
