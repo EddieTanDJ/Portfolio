@@ -12,8 +12,8 @@ export function Projects({ items }) {
   return (
     <section id="projects" className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
       <SectionHeading
-        eyebrow="Selected Project"
-        title="Projects that combine curiosity, engineering, and practical problem solving."
+        eyebrow="Projects"
+        title="My Personal Projects"
         description="A mix of personal and collaborative work across mobile, web, AI, and enterprise-flavored products."
       />
       <div className="mt-12 grid gap-8">

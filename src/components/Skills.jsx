@@ -16,9 +16,8 @@ export function Skills({ items }) {
         className={`rounded-[3rem] border px-8 py-10 shadow-card md:px-12 ${isDark ? 'border-white/10 bg-slate/80 text-sand' : SURFACE_STYLES.section.light + ' text-ink'}`}
       >
         <SectionHeading
-          eyebrow="Capabilities"
-          title="A toolkit built across enterprise systems, product delivery, and full-stack craft."
-          description="These are the capabilities I reach for most often when shipping software that has to work well in real organizations."
+          eyebrow="Skills"
+          title="The skills I picked up in my organization and personal projects."
         />
         
         {/* Mapping Skill items to stylised chips */}

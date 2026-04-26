@@ -11,10 +11,8 @@ export function Experience({ items }) {
   return (
     <section id="experience" className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
       <SectionHeading
-        eyebrow="Professional Experience"
-        title="Work shaped by delivery, modernization, and steady execution."
-        description="A snapshot of the environments where I have translated requirements into durable software outcomes."
-      />
+        eyebrow="Work Experiences"
+        title="My work experiences across multiple industries and roles."      />
       <div className="mt-12 grid gap-6">
         {items.map((item) => (
           <article

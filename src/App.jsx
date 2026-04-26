@@ -39,10 +39,10 @@ function App() {
         <Hero hero={hero} socialLinks={socialLinks} />
         {/* About section */}
         <About paragraphs={aboutParagraphs} />
+        {/* Experience section */}
+        <Experience items={experiences} />
         {/* Skills section */}
         <Skills items={skills} />
-        {/* Experience section*/}
-        <Experience items={experiences} />
         {/* Projects section*/}
         <Projects items={projects} />
         {/* Contact section */}
