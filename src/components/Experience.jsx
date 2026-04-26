@@ -7,7 +7,7 @@ export function Experience({ items }) {
   return (
     <section id="experience" className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
       <SectionHeading
-        eyebrow="Experience"
+        eyebrow="Professional Experience"
         title="Work shaped by delivery, modernization, and steady execution."
         description="A snapshot of the environments where I have translated requirements into durable software outcomes."
       />

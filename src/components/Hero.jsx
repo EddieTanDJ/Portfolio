@@ -4,16 +4,42 @@ import { useTheme } from '../context/ThemeContext'
 
 export function Hero({ hero, socialLinks }) {
   const [activeRole, setActiveRole] = useState(0)
+  const [displayedText, setDisplayedText] = useState('')
+  const [isDeleting, setIsDeleting] = useState(false)
   const { isDark } = useTheme()
-
+  const [count, setCount] = useState(0)
+  // After render
   useEffect(() => {
-    const intervalId = window.setInterval(() => {
-      setActiveRole((current) => (current + 1) % hero.roles.length)
-    }, 2200)
+    const currentWord = hero.roles[activeRole]
+    const typingSpeed = isDeleting ? 40 : 100
+    let timeoutId
 
-    return () => window.clearInterval(intervalId)
-  }, [hero.roles.length])
+    if (isDeleting) {
+      if (displayedText === '') {
+        setIsDeleting(false)
+        setActiveRole((current) => (current + 1) % hero.roles.length)
+      } else {
+        timeoutId = setTimeout(() => {
+          setDisplayedText(currentWord.substring(0, displayedText.length - 1))
+        }, typingSpeed)
+      }
+    } else {
+      if (displayedText === currentWord) {
+        timeoutId = setTimeout(() => {
+          setIsDeleting(true)
+        }, 2000) // Pause before deleting
+      } else {
+        timeoutId = setTimeout(() => {
+          // Add one character
+          setDisplayedText(currentWord.substring(0, displayedText.length + 1))
+        }, typingSpeed)
+      }
+    }
 
+    return () => clearTimeout(timeoutId)
+  }, [displayedText, isDeleting, activeRole, hero.roles])
+
+  // 
   return (
     <section id="home" className="mx-auto max-w-7xl px-6 pb-24 pt-16 lg:px-10 lg:pb-28 lg:pt-24">
       <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
@@ -23,7 +49,7 @@ export function Hero({ hero, socialLinks }) {
             <h1 className={`font-display text-6xl leading-[0.92] sm:text-7xl lg:text-8xl ${isDark ? SURFACE_STYLES.text.dark : SURFACE_STYLES.text.light}`}>
               {hero.title}
               <span className={`mt-3 block text-4xl sm:text-5xl lg:text-6xl ${isDark ? SURFACE_STYLES.mutedText.dark : SURFACE_STYLES.mutedText.light}`}>
-                Building products that feel thoughtful from the inside out.
+                Building products that solve real-world problems.
               </span>
             </h1>
             <p className={`max-w-2xl text-lg leading-8 ${isDark ? SURFACE_STYLES.mutedText.dark : SURFACE_STYLES.mutedText.light}`}>{hero.intro}</p>
@@ -48,7 +74,10 @@ export function Hero({ hero, socialLinks }) {
 
           <div className={`rounded-[2rem] border p-6 shadow-card backdrop-blur ${isDark ? SURFACE_STYLES.section.dark : SURFACE_STYLES.section.light}`}>
             <p className={`text-sm uppercase tracking-[0.3em] ${isDark ? SURFACE_STYLES.eyebrowText.dark : SURFACE_STYLES.eyebrowText.light}`}>I am a</p>
-            <p className={`mt-3 font-display text-4xl transition-all duration-300 ${isDark ? 'text-clay' : 'text-ink'}`}>{hero.roles[activeRole]}</p>
+            <p className={`mt-3 font-display text-4xl ${isDark ? 'text-clay' : 'text-ink'}`}>
+              {displayedText}
+              <span className="animate-pulse">|</span>
+            </p>
           </div>
         </div>
 

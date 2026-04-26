@@ -39,15 +39,15 @@ export const hero = {
   title: 'Eddie Tan',
   intro: 'Software engineer shaping practical systems that stay maintainable as teams and products grow.',
   roles: ['Developer', 'Problem Solver', 'Software Engineer'],
-  ctaHref: '#projects',
-  ctaLabel: 'View Projects',
+  ctaHref: '#experience',
+  ctaLabel: 'View Experience',
   resumeUrl: 'https://drive.google.com/file/d/1Lgi8ChIBODG97UMWaWmRGeI2TP4h-6xY/view?usp=sharing',
   profileImage: assetPath('assets/png/Eddie.jpg'),
 }
 
 export const aboutParagraphs = [
   'Hey, I am Eddie Tan, a software engineer with three years of professional experience specializing in Java, Spring Boot, and OutSystems. I enjoy building efficient systems, solving difficult product problems, and collaborating closely with cross-functional teams.',
-  'Across healthcare, consulting, and data-focused environments, I have delivered products that balance technical depth with practical business impact. Each project has helped me refine how I design, ship, and support maintainable software.',
+  'A collaborative team player with a solid grasp of software development methodologies and a commitment to continuous learning.',
   'I am open to opportunities where I can contribute, keep learning, and grow with a thoughtful engineering team. If that sounds like your environment, feel free to reach out.',
 ]
 

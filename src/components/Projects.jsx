@@ -7,7 +7,7 @@ export function Projects({ items }) {
   return (
     <section id="projects" className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
       <SectionHeading
-        eyebrow="Selected Work"
+        eyebrow="Selected Project"
         title="Projects that combine curiosity, engineering, and practical problem solving."
         description="A mix of personal and collaborative work across mobile, web, AI, and enterprise-flavored products."
       />

@@ -1,11 +1,24 @@
 import { render, screen, within } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from './App'
+import { ThemeProvider } from './context/ThemeContext'
 import { experiences, projects } from './data/content'
 
+// Helper to render with ThemeProvider
+const renderApp = () => render(
+  <ThemeProvider>
+    <App />
+  </ThemeProvider>
+)
+
 describe('App', () => {
+  afterEach(() => {
+    window.localStorage.clear()
+    document.documentElement.removeAttribute('data-theme')
+  })
+
   it('renders the main portfolio sections', () => {
-    render(<App />)
+    renderApp()
 
     expect(document.querySelector('#about')).toBeInTheDocument()
     expect(document.querySelector('#skills')).toBeInTheDocument()
@@ -15,7 +28,7 @@ describe('App', () => {
   })
 
   it('renders experience and project data from the content module', () => {
-    render(<App />)
+    renderApp()
 
     experiences.forEach((item) => {
       expect(screen.getByText(item.role)).toBeInTheDocument()
@@ -27,7 +40,7 @@ describe('App', () => {
   })
 
   it('includes anchor navigation for key sections', () => {
-    render(<App />)
+    renderApp()
 
     expect(screen.getByRole('link', { name: 'About' })).toHaveAttribute('href', '#about')
     expect(screen.getByRole('link', { name: 'Projects' })).toHaveAttribute('href', '#projects')
@@ -35,7 +48,7 @@ describe('App', () => {
   })
 
   it('renders the contact form fields and submit button', () => {
-    render(<App />)
+    renderApp()
 
     expect(screen.getByLabelText(/name/i)).toBeInTheDocument()
     expect(screen.getByLabelText(/email/i)).toBeInTheDocument()
@@ -45,7 +58,7 @@ describe('App', () => {
 
   it('toggles the mobile menu', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderApp()
 
     const toggle = screen.getByRole('button', { name: /toggle navigation menu/i })
     await user.click(toggle)
@@ -59,7 +72,7 @@ describe('App', () => {
   })
 
   it('adds secure rel attributes to external links', () => {
-    render(<App />)
+    renderApp()
 
     const resumeLinks = screen.getAllByRole('link', { name: /resume/i })
     resumeLinks.forEach((link) => {
@@ -68,15 +81,17 @@ describe('App', () => {
     })
   })
 
-  it('toggles between dark and light mode and persists the choice', async () => {
+  it('toggles between light and dark mode and persists the choice', async () => {
     const user = userEvent.setup()
-    render(<App />)
+    renderApp()
+
+    // Default is light
+    expect(document.documentElement.dataset.theme).toBe('light')
+
+    // Find and click the toggle to dark mode
+    await user.click(screen.getAllByRole('button', { name: /switch to dark mode/i })[0])
 
     expect(document.documentElement.dataset.theme).toBe('dark')
-
-    await user.click(screen.getAllByRole('button', { name: /switch to light mode/i })[0])
-
-    expect(document.documentElement.dataset.theme).toBe('light')
-    expect(window.localStorage.getItem('portfolio-theme')).toBe('light')
+    expect(window.localStorage.getItem('portfolio-theme')).toBe('dark')
   })
 })

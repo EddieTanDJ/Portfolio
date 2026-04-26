@@ -35,10 +35,15 @@ function App() {
         profileImage={hero.profileImage}
       />
       <main>
+        {/* Hero section */}
         <Hero hero={hero} socialLinks={socialLinks} />
+        {/* About section */}
         <About paragraphs={aboutParagraphs} />
+        {/* Skills section */}
         <Skills items={skills} />
+        {/* Experience section */}
         <Experience items={experiences} />
+        {/* Projects section */}
         <Projects items={projects} />
         <Contact formConfig={contactForm} />
       </main>
