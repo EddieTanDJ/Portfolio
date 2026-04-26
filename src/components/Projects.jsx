@@ -1,3 +1,8 @@
+/**
+ * @file Projects.jsx
+ * Visual showcase of portfolio projects with dynamic image positioning.
+ * Each project includes descriptions, technology tags, and relevant external links.
+ */
 import { SectionHeading } from './SectionHeading'
 import { SURFACE_STYLES } from '../lib/theme'
 import { useTheme } from '../context/ThemeContext'
@@ -5,7 +10,7 @@ import { useTheme } from '../context/ThemeContext'
 export function Projects({ items }) {
   const { isDark } = useTheme()
   return (
-    <section id="projects" className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+    <section id="projects" className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
       <SectionHeading
         eyebrow="Selected Project"
         title="Projects that combine curiosity, engineering, and practical problem solving."
@@ -15,8 +20,13 @@ export function Projects({ items }) {
         {items.map((project, index) => (
           <article
             key={project.title}
+            /**
+             * Alternates the layout (image left vs image right) using the array index.
+             * This provides visual variety and a better reading rhythm for long lists.
+             */
             className={`grid gap-6 overflow-hidden rounded-[2.25rem] border p-5 shadow-card backdrop-blur lg:grid-cols-2 lg:p-6 ${isDark ? SURFACE_STYLES.section.dark : SURFACE_STYLES.section.light}`}
           >
+            {/* Image container: Conditional ordering based on index parity */}
             <div className={index % 2 === 1 ? 'lg:order-2' : ''}>
               <img
                 src={project.image}
@@ -25,10 +35,14 @@ export function Projects({ items }) {
                 loading="lazy"
               />
             </div>
+            
+            {/* Content container: Conditional ordering based on index parity */}
             <div className={`flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
               <p className={`text-sm font-semibold uppercase tracking-[0.3em] ${isDark ? 'text-gold' : 'text-ink'}`}>Project {index + 1}</p>
               <h3 className={`mt-3 font-display text-4xl ${isDark ? SURFACE_STYLES.text.dark : SURFACE_STYLES.text.light}`}>{project.title}</h3>
               <p className={`mt-4 text-lg leading-8 ${isDark ? SURFACE_STYLES.mutedText.dark : SURFACE_STYLES.mutedText.light}`}>{project.description}</p>
+              
+              {/* Categorization tags for technical stack identification */}
               <div className="mt-6 flex flex-wrap gap-3">
                 {project.tags.map((tag) => (
                   <span
@@ -39,6 +53,8 @@ export function Projects({ items }) {
                   </span>
                 ))}
               </div>
+              
+              {/* Dynamic Action Links (Download APK, View Code, etc.) */}
               {project.links?.length ? (
                 <div className="mt-8 flex flex-wrap gap-3">
                   {project.links.map((link) => (

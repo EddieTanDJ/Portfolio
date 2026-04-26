@@ -1,7 +1,16 @@
+/**
+ * @file Footer.jsx
+ * Application footer providing credits, summary branding, and accessibility-focused social links.
+ */
 import { useTheme } from '../context/ThemeContext'
 
 export function Footer({ socialLinks }) {
   const { isDark } = useTheme()
+  
+  /**
+   * Unlike other sections, the footer traditionally uses a dark background 
+   * in this specific design to create a sense of completion at the bottom of the page.
+   */
   return (
     <footer className={`border-t px-6 py-10 lg:px-10 ${isDark ? 'border-white/10 bg-ink text-sand' : 'border-ink/10 bg-ink text-sand'}`}>
       <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
@@ -9,6 +18,8 @@ export function Footer({ socialLinks }) {
           <p className="text-sm uppercase tracking-[0.35em] text-sand/60">Eddie Tan</p>
           <h2 className="mt-3 font-display text-4xl">Software engineer with a bias for clarity and useful systems.</h2>
         </div>
+        
+        {/* Secondary Social Navigation: Useful for UX flow after finishing the project list. */}
         <div className="flex flex-wrap gap-3">
           {socialLinks.map((link) => (
             <a
@@ -24,6 +35,8 @@ export function Footer({ socialLinks }) {
           ))}
         </div>
       </div>
+      
+      {/* Attribution and technical stack credit */}
       <div className="mx-auto mt-8 max-w-7xl border-t border-white/10 pt-6 text-sm text-sand/55">
         &copy; Eddie Tan. Crafted in React for GitHub Pages.
       </div>

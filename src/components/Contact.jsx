@@ -1,3 +1,7 @@
+/**
+ * @file Contact.jsx
+ * Contact section with a fully validated form integration for external submissions.
+ */
 import { useMemo, useState } from 'react'
 import { SectionHeading } from './SectionHeading'
 import { SURFACE_STYLES } from '../lib/theme'
@@ -11,11 +15,24 @@ const initialFormState = {
 
 export function Contact({ formConfig }) {
   const [values, setValues] = useState(initialFormState)
+  /**
+   * Errors object stores validation messages keyed by field name.
+   * If an object key exists, the corresponding field is considered invalid.
+   */
   const [errors, setErrors] = useState({})
   const { isDark } = useTheme()
 
+  // Derived state to check if the overall form is currently valid.
   const isValid = useMemo(() => Object.keys(errors).length === 0, [errors])
 
+  /**
+   * Core validation logic. 
+   * Checks for non-empty fields and enforces a standard email regex pattern.
+   * Updates 'errors' state to trigger UI feedback.
+   * 
+   * @param {Object} nextValues - The current form values to validate.
+   * @returns {boolean} True if no errors were found.
+   */
   const validate = (nextValues) => {
     const nextErrors = {}
 
@@ -37,6 +54,11 @@ export function Contact({ formConfig }) {
     return Object.keys(nextErrors).length === 0
   }
 
+  /**
+   * Input change handler.
+   * Updates state and runs validation immediately to provide real-time 
+   * user feedback as they type.
+   */
   const handleChange = (event) => {
     const { name, value } = event.target
     const nextValues = { ...values, [name]: value }
@@ -44,6 +66,10 @@ export function Contact({ formConfig }) {
     validate(nextValues)
   }
 
+  /**
+   * Final validation check before allowing the browser to proceed with the 
+   * POST request to the external endpoint.
+   */
   const handleSubmit = (event) => {
     if (!validate(values)) {
       event.preventDefault()
@@ -51,7 +77,7 @@ export function Contact({ formConfig }) {
   }
 
   return (
-    <section id="contact" className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
+    <section id="contact" className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
       <div className={`grid gap-12 rounded-[3rem] border px-8 py-10 shadow-card backdrop-blur lg:grid-cols-[0.9fr_1.1fr] lg:px-12 ${isDark ? SURFACE_STYLES.section.dark : SURFACE_STYLES.section.light}`}>
         <div>
           <SectionHeading
@@ -65,6 +91,12 @@ export function Contact({ formConfig }) {
           </div>
         </div>
 
+        {/* 
+            Form configuration points to Web3Forms external endpoint.
+            access_key: API authorization
+            redirect: Landing page after successful submit
+            botcheck: Hidden honeypot field for anti-spam
+        */}
         <form action={formConfig.endpoint} method="POST" onSubmit={handleSubmit} noValidate className="grid gap-5">
           <input type="hidden" name="access_key" value={formConfig.accessKey} />
           <input type="hidden" name="subject" value={formConfig.subject} />
@@ -118,6 +150,11 @@ export function Contact({ formConfig }) {
   )
 }
 
+/**
+ * Atomic form field component.
+ * Abstracts the label/input/error structure to maintain consistency 
+ * and reduce boilerplate in the main Contact component.
+ */
 function Field({ as = 'input', error, id, label, ...props }) {
   const Component = as
   const { isDark } = useTheme()
@@ -135,6 +172,7 @@ function Field({ as = 'input', error, id, label, ...props }) {
         aria-describedby={error ? `${id}-error` : undefined}
         {...props}
       />
+      {/* Dynamic error display: Only renders if an error message exists for this field */}
       {error ? (
         <p id={`${id}-error`} className="mt-2 text-sm font-medium text-clay">
           {error}

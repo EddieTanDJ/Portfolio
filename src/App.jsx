@@ -37,14 +37,15 @@ function App() {
       <main>
         {/* Hero section */}
         <Hero hero={hero} socialLinks={socialLinks} />
-        {/* About section */}
+        {/* About section/}
         <About paragraphs={aboutParagraphs} />
-        {/* Skills section */}
+        {/* Skills section*/}
         <Skills items={skills} />
-        {/* Experience section */}
+        {/* Experience section*/}
         <Experience items={experiences} />
-        {/* Projects section */}
+        {/* Projects section*/}
         <Projects items={projects} />
+        {/* Contact section */}
         <Contact formConfig={contactForm} />
       </main>
       <Footer socialLinks={socialLinks} />

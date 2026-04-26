@@ -1,10 +1,25 @@
+/**
+ * @file theme.js
+ * Utility library for centralizing theme-related constants and visual design logic.
+ * 
+ * This module defines the Tailwind class mappings for different UI "surfaces",
+ * ensuring that color contrast and aesthetics remain consistent across both 
+ * light and dark modes without cluttering individual components with conditional logic.
+ */
+
 export const THEMES = {
   dark: 'dark',
   light: 'light',
 }
 
+// Local storage key for theme persistence
 export const THEME_KEY = 'portfolio-theme'
 
+/**
+ * Tailwind class mappings for stylized UI elements.
+ * Following a naming convention for different UI parts (e.g., surface, ghostButton)
+ * allows for quick global design adjustments from a single location.
+ */
 export const SURFACE_STYLES = {
   section: {
     dark: 'border-white/10 bg-white/5',
@@ -44,6 +59,10 @@ export const SURFACE_STYLES = {
   },
 }
 
+/**
+ * Global background styles for the main App shell.
+ * Controls the overall color palette and the opacity of visual overlays.
+ */
 export const APP_BACKGROUNDS = {
   dark: {
     shell: 'bg-night text-sand',
@@ -55,14 +74,19 @@ export const APP_BACKGROUNDS = {
   },
 }
 
+// Logic helpers to check current theme state
 export function isDarkTheme(theme) {
   return theme === THEMES.dark
 }
 
+// Determines the next theme value when toggling
 export function nextTheme(theme) {
   return isDarkTheme(theme) ? THEMES.light : THEMES.dark
 }
 
+/**
+ * Display labels and accessibility descriptions for theme UI controls.
+ */
 export function themeLabel(theme) {
   return isDarkTheme(theme) ? 'Light Mode' : 'Dark Mode'
 }

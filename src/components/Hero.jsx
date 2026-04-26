@@ -1,20 +1,31 @@
+/**
+ * @file Hero.jsx
+ * Displays the primary landing view, featuring an animated terminal-style 
+ * typing effect to introduce the user's professional roles.
+ */
 import { useEffect, useState } from 'react'
 import { SURFACE_STYLES } from '../lib/theme'
 import { useTheme } from '../context/ThemeContext'
 
 export function Hero({ hero, socialLinks }) {
+  // State for the roles typing animation
   const [activeRole, setActiveRole] = useState(0)
   const [displayedText, setDisplayedText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
   const { isDark } = useTheme()
   const [count, setCount] = useState(0)
-  // After render
+
+  /**
+   * Orchestrates the typing/deleting animation cycle for the "I am a ..." section.
+   * Leverages a recursive-style useEffect with timeouts to simulate human typing.
+   */
   useEffect(() => {
     const currentWord = hero.roles[activeRole]
     const typingSpeed = isDeleting ? 40 : 100
     let timeoutId
 
     if (isDeleting) {
+      // Logic for deleting text character by character
       if (displayedText === '') {
         setIsDeleting(false)
         setActiveRole((current) => (current + 1) % hero.roles.length)
@@ -24,24 +35,25 @@ export function Hero({ hero, socialLinks }) {
         }, typingSpeed)
       }
     } else {
+      // Logic for typing text character by character
       if (displayedText === currentWord) {
+        // Once the full word is displayed, pause for readability before deleting
         timeoutId = setTimeout(() => {
           setIsDeleting(true)
-        }, 2000) // Pause before deleting
+        }, 2000)
       } else {
         timeoutId = setTimeout(() => {
-          // Add one character
           setDisplayedText(currentWord.substring(0, displayedText.length + 1))
         }, typingSpeed)
       }
     }
 
+    // Cleanup ensures we don't have overlapping timeouts on state changes
     return () => clearTimeout(timeoutId)
   }, [displayedText, isDeleting, activeRole, hero.roles])
 
-  // 
   return (
-    <section id="home" className="mx-auto max-w-7xl px-6 pb-24 pt-16 lg:px-10 lg:pb-28 lg:pt-24">
+    <section id="home" className="mx-auto max-w-7xl px-6 pb-16 pt-16 lg:px-10 lg:pb-20 lg:pt-24">
       <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
         <div className="space-y-8">
           <p className={`text-sm font-semibold uppercase tracking-[0.4em] ${isDark ? 'text-gold' : 'text-ink'}`}>Engineering with calm precision</p>
@@ -82,6 +94,7 @@ export function Hero({ hero, socialLinks }) {
         </div>
 
         <div className="relative">
+          {/* Decorative background glow behind the profile image card */}
           <div className="absolute inset-x-8 bottom-6 top-8 rounded-[2rem] bg-gradient-to-br from-gold/30 via-clay/25 to-moss/25" aria-hidden="true" />
           <div className={`relative overflow-hidden rounded-[2.5rem] border p-6 shadow-card backdrop-blur ${isDark ? SURFACE_STYLES.section.dark : SURFACE_STYLES.section.light}`}>
             <img
