@@ -6,7 +6,8 @@ import { Header } from './components/Header'
 import { Hero } from './components/Hero'
 import { Projects } from './components/Projects'
 import { Skills } from './components/Skills'
-import { aboutParagraphs, contactForm, experiences, hero, navItems, projects, skills, socialLinks } from './data/content'
+import { Certificate } from './components/Certificate'
+import { aboutParagraphs, contactForm, experiences, hero, navItems, projects, skills, socialLinks, certifications } from './data/content'
 import { APP_BACKGROUNDS } from './lib/theme'
 import { useTheme } from './context/ThemeContext'
 
@@ -45,6 +46,8 @@ function App() {
         <Skills items={skills} />
         {/* Projects section*/}
         <Projects items={projects} />
+        {/* Certificate section */}
+        <Certificate items={certifications} />
         {/* Contact section */}
         <Contact formConfig={contactForm} />
       </main>

@@ -159,3 +159,12 @@ export const contactForm = {
   redirect: 'https://eddietandj.github.io/Portfolio/',
   fromName: 'Eddie Portfolio',
 }
+
+export const certifications = {
+  title: 'AWS Certified Cloud Practitioner',
+  issuer: 'Amazon Web Services',
+  issueDate: 'Issued Jan 2024',
+  ExpiryDate: 'No Expiry',
+  credentialId: 'ABC123456789',
+  credentialUrl: 'https://www.youracclaim.com/badges/abc123456789',
+}
