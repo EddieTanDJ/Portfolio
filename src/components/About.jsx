@@ -34,7 +34,7 @@ export function About({ paragraphs }) {
           <div className="flex justify-start pt-6">
             <a
               href="#contact"
-              className={`inline-flex items-center gap-3 rounded-full border px-8 py-4 text-sm font-semibold uppercase tracking-[0.25em] transition hover:-translate-y-1 ${isDark ? 'border-gold/40 bg-gold/10 text-gold hover:bg-gold hover:text-night' : 'border-ink/20 bg-ink/10 text-ink hover:bg-ink hover:text-sand'}`}
+              className={`inline-flex items-center justify-center rounded-full px-7 py-4 text-sm font-semibold uppercase tracking-[0.28em] transition hover:-translate-y-0.5 ${isDark ? 'bg-gold text-night hover:bg-clay hover:text-sand' : 'bg-ink text-sand hover:bg-ink/90'}`}
             >
               Let&apos;s connect
             </a>

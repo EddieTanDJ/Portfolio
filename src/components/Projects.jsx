@@ -31,7 +31,7 @@ export function Projects({ items }) {
               <img
                 src={project.image}
                 alt={`${project.title} project preview`}
-                className="h-full min-h-80 w-full rounded-[1.75rem] object-cover"
+                className="h-full w-full rounded-[1.75rem] object-contain sm:object-cover sm:min-h-80"
                 loading="lazy"
               />
             </div>
@@ -63,7 +63,15 @@ export function Projects({ items }) {
                       href={link.href}
                       target="_blank"
                       rel="noreferrer noopener"
-                      className={`inline-flex items-center justify-center rounded-full border px-5 py-3 text-sm font-semibold uppercase tracking-[0.22em] transition hover:-translate-y-0.5 hover:border-gold hover:text-gold ${isDark ? SURFACE_STYLES.ghostButton.dark : SURFACE_STYLES.ghostButton.light}`}
+                      className={`inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-semibold uppercase tracking-[0.22em] transition hover:-translate-y-0.5 ${
+                        link.label.toLowerCase().includes('apk')
+                          ? isDark
+                            ? 'border border-gold/40 bg-gold/10 text-gold hover:bg-gold hover:text-night'
+                            : 'border border-ink/20 bg-ink/10 text-ink hover:bg-ink hover:text-sand'
+                          : isDark
+                            ? 'bg-gold text-night hover:bg-clay hover:text-sand'
+                            : 'bg-ink text-sand hover:bg-ink/90'
+                      }`}
                     >
                       {link.label}
                     </a>
