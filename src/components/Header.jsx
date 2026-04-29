@@ -24,27 +24,27 @@ export function Header({ navItems, profileImage, resumeUrl }) {
     <header
       className={`sticky top-0 z-50 border-b backdrop-blur-xl ${isDark ? SURFACE_STYLES.header.dark : SURFACE_STYLES.header.light}`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+      <div className="flex items-center justify-between px-8 py-5 lg:px-16 lg:py-6">
         {/* Branding/Logo: Links back to home section */}
-        <a href="#home" className="group flex items-center gap-3">
+        <a href="#home" className="group flex shrink-0 items-center gap-3">
           <img
             src={profileImage}
             alt="Portrait of Eddie Tan"
-            className={`h-12 w-12 rounded-full border object-cover shadow-card ${isDark ? 'border-white/10' : 'border-ink/10'}`}
+            className={`h-14 w-14 rounded-full border object-cover shadow-card ${isDark ? 'border-white/10' : 'border-ink/10'}`}
           />
           <div>
-            <p className={`font-display text-2xl tracking-wide ${isDark ? SURFACE_STYLES.text.dark : SURFACE_STYLES.text.light}`}>Eddie Tan</p>
+            <p className={`font-display text-3xl tracking-wide ${isDark ? SURFACE_STYLES.text.dark : SURFACE_STYLES.text.light}`}>Eddie Tan</p>
             <p className={`text-xs uppercase tracking-[0.35em] ${isDark ? SURFACE_STYLES.eyebrowText.dark : SURFACE_STYLES.eyebrowText.light}`}>Software Engineer</p>
           </div>
         </a>
 
         {/* Desktop Navigation: Hidden on smaller viewports */}
-        <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
+        <nav className="hidden shrink-0 items-center gap-10 lg:flex" aria-label="Primary">
           {navItems.map((item) => (
             <a
               key={item.href}
               href={item.href}
-              className={`text-sm font-medium uppercase tracking-[0.25em] transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay ${isDark ? 'text-mist/80' : 'text-ink/75'}`}
+              className={`text-sm font-medium uppercase tracking-[0.18em] transition hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay ${isDark ? 'text-mist/80' : 'text-ink/75'}`}
             >
               {item.label}
             </a>
@@ -53,7 +53,7 @@ export function Header({ navItems, profileImage, resumeUrl }) {
             href={resumeUrl}
             target="_blank"
             rel="noreferrer noopener"
-            className={`rounded-full border px-5 py-2 text-sm font-semibold uppercase tracking-[0.22em] transition hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-night focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay ${isDark ? SURFACE_STYLES.ghostButton.dark : SURFACE_STYLES.ghostButton.light}`}
+            className={`rounded-full border px-6 py-3 text-sm font-semibold uppercase tracking-[0.22em] transition hover:-translate-y-0.5 hover:border-gold hover:bg-gold hover:text-night focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay ${isDark ? SURFACE_STYLES.ghostButton.dark : SURFACE_STYLES.ghostButton.light}`}
           >
             Resume
           </a>
@@ -62,7 +62,7 @@ export function Header({ navItems, profileImage, resumeUrl }) {
           <button
             type="button"
             onClick={toggleTheme}
-            className={`flex h-10 w-10 items-center justify-center rounded-full border transition hover:-translate-y-0.5 hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay ${isDark ? SURFACE_STYLES.ghostButton.dark : SURFACE_STYLES.ghostButton.light}`}
+            className={`flex h-11 w-11 items-center justify-center rounded-full border transition hover:-translate-y-0.5 hover:border-gold hover:text-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clay ${isDark ? SURFACE_STYLES.ghostButton.dark : SURFACE_STYLES.ghostButton.light}`}
             aria-label={themeAriaLabel(theme)}
           >
             {isDark ? (

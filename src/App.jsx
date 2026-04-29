@@ -6,8 +6,9 @@ import { Header } from './components/Header'
 import { Hero } from './components/Hero'
 import { Projects } from './components/Projects'
 import { Skills } from './components/Skills'
+import { Education } from './components/Education'
 import { Certificate } from './components/Certificate'
-import { aboutParagraphs, contactForm, experiences, hero, navItems, projects, skills, socialLinks, certifications } from './data/content'
+import { aboutParagraphs, contactForm, experiences, hero, navItems, projects, skills, socialLinks, educations, certifications } from './data/content'
 import { APP_BACKGROUNDS } from './lib/theme'
 import { useTheme } from './context/ThemeContext'
 
@@ -46,6 +47,8 @@ function App() {
         <Skills items={skills} />
         {/* Projects section*/}
         <Projects items={projects} />
+        {/* Education section */}
+        <Education items={educations} />
         {/* Certificate section */}
         <Certificate items={certifications} />
         {/* Contact section */}

@@ -3,6 +3,7 @@
  * Presentational component for consistent section titles and subtitles.
  * Supports an 'invert' prop for cases where the heading sits on a dark background 
  * regardless of the global theme choice.
+ * This component is used across multiple sections to maintain a unified visual hierarchy and style.
  */
 import { SURFACE_STYLES } from '../lib/theme'
 import { useTheme } from '../context/ThemeContext'

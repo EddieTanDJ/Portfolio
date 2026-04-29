@@ -12,6 +12,7 @@ export const navItems = [
   { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },
   { label: 'Projects', href: '#projects' },
+  { label: 'Education', href: '#education' },
   { label: 'Certificates', href: '#certificate' },
   { label: 'Contact', href: '#contact' },
 ]
@@ -64,6 +65,7 @@ export const skills = [
   'Data Analysis',
   'Data Visualization',
   'AWS',
+  'Agile Methodologies',
 ].map((name) => ({ name }))
 
 export const experiences = [
@@ -178,4 +180,24 @@ export const certifications = [
   description: 'Those who earn the globally recognized Professional Scrum Master I (PSM I) certification have demonstrated a fundamental level of Scrum mastery, including the concepts of applying Scrum, and proven an understanding of Scrum as described in the Scrum Guide. This individual has also demonstrated a consistent use of terminology and approach to Scrum.',
   credentialUrl: 'https://www.credly.com/badges/fffb1d2c-f2aa-4de5-bec7-74ace458ac60',
 },
+]
+
+export const educations = [
+  {
+    institution: 'Singapore Institute of Technology',  
+    degree: 'Bachelor of Engineering in Information & Communications Technology Majoring in Software Engineering Honours with Merit',
+    period: 'Sep 2020 - Jan 2024',
+    highlights: [
+      'Graduated with Honours with merit and A- for my capstone project',
+      'Finalist for the CODE Hackathon 2023, where I designed and implemented an application prototype for managing module assessments using OutSystems.',
+    ],
+  },
+  {
+    institution: 'Temasek Polytechnic',  
+    degree: 'Diploma in Big Data Management and Governance',
+    period: 'Jul 2017 - Apr 2020',
+    highlights: [
+      'A in major project',
+    ],
+  }
 ]

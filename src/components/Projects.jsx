@@ -38,7 +38,6 @@ export function Projects({ items }) {
             
             {/* Content container: Conditional ordering based on index parity */}
             <div className={`flex flex-col justify-center ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-              <p className={`text-sm font-semibold uppercase tracking-[0.3em] ${isDark ? 'text-gold' : 'text-ink'}`}>Project {index + 1}</p>
               <h3 className={`mt-3 font-display text-4xl ${isDark ? SURFACE_STYLES.text.dark : SURFACE_STYLES.text.light}`}>{project.title}</h3>
               <p className={`mt-4 text-lg leading-8 ${isDark ? SURFACE_STYLES.mutedText.dark : SURFACE_STYLES.mutedText.light}`}>{project.description}</p>
               

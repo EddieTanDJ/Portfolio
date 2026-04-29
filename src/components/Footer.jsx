@@ -16,7 +16,7 @@ export function Footer({ socialLinks }) {
       <div className="mx-auto flex max-w-7xl flex-col gap-8 md:flex-row md:items-end md:justify-between">
         <div>
           <p className="text-sm uppercase tracking-[0.35em] text-sand/60">Eddie Tan</p>
-          <h2 className="mt-3 font-display text-4xl">Software engineer with a bias for clarity and useful systems.</h2>
+          <h2 className="mt-3 font-display text-4xl">Solution-Oriented Software Engineer</h2>
         </div>
         
         {/* Secondary Social Navigation: Useful for UX flow after finishing the project list. */}
@@ -38,7 +38,7 @@ export function Footer({ socialLinks }) {
       
       {/* Attribution and technical stack credit */}
       <div className="mx-auto mt-8 max-w-7xl border-t border-white/10 pt-6 text-sm text-sand/55">
-        &copy; Eddie Tan. Crafted in React for GitHub Pages.
+        &copy; Eddie Tan. Copyright 2026. Built with React, Tailwind CSS, and Vite.
       </div>
     </footer>
   )
