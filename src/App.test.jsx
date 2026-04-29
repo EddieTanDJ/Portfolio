@@ -3,6 +3,7 @@ import userEvent from '@testing-library/user-event'
 import App from './App'
 import { ThemeProvider } from './context/ThemeContext'
 import { experiences, projects } from './data/content'
+import { expect } from 'vitest'
 
 // Helper to render with ThemeProvider
 const renderApp = () => render(
@@ -25,6 +26,8 @@ describe('App', () => {
     expect(document.querySelector('#experience')).toBeInTheDocument()
     expect(document.querySelector('#projects')).toBeInTheDocument()
     expect(document.querySelector('#contact')).toBeInTheDocument()
+    expect(document.querySelector('#education')).toBeInTheDocument()
+    expect(document.querySelector('#certificate')).toBeInTheDocument()
   })
 
   it('renders experience and project data from the content module', () => {
@@ -45,6 +48,10 @@ describe('App', () => {
     expect(screen.getByRole('link', { name: 'About' })).toHaveAttribute('href', '#about')
     expect(screen.getByRole('link', { name: 'Projects' })).toHaveAttribute('href', '#projects')
     expect(screen.getByRole('link', { name: 'Contact' })).toHaveAttribute('href', '#contact')
+    expect(screen.getByRole('link', { name: 'Experience' })).toHaveAttribute('href', '#experience')
+    expect(screen.getByRole('link', { name: 'Skills' })).toHaveAttribute('href', '#skills')
+    expect(screen.getByRole('link', { name: 'Education' })).toHaveAttribute('href', '#education')
+    expect(screen.getByRole('link', { name: 'Certificates' })).toHaveAttribute('href', '#certificate')
   })
 
   it('renders the contact form fields and submit button', () => {
