@@ -185,21 +185,21 @@ export const contactForm = {
 
 export const certifications = [
   {
-  title: 'AWS Certified Cloud Practitioner',
-  issuer: 'Amazon Web Services',
-  issueDate: '21 June 2024',
-  expiryDate: '21 June 2027',
-  description: 'Earners of this certification have a fundamental understanding of IT services and their uses in the AWS Cloud. They demonstrated cloud fluency and foundational AWS knowledge.',
-  credentialUrl: 'https://www.credly.com/badges/8918e5f0-88f6-4939-9142-12972f02e06c',
-},
-{
-  title: 'Professional Scrum Master™ I (PSM I)',
-  issuer: 'Scrum.org',
-  issueDate: '01 Sep 2021',
-  expiryDate: '',
-  description: 'Those who earn the globally recognized Professional Scrum Master I (PSM I) certification have demonstrated a fundamental level of Scrum mastery, including the concepts of applying Scrum, and proven an understanding of Scrum as described in the Scrum Guide. This individual has also demonstrated a consistent use of terminology and approach to Scrum.',
-  credentialUrl: 'https://www.credly.com/badges/fffb1d2c-f2aa-4de5-bec7-74ace458ac60',
-},
+    title: 'AWS Certified Cloud Practitioner',
+    issuer: 'Amazon Web Services',
+    issueDate: '21 June 2024',
+    expiryDate: '21 June 2027',
+    description: 'Earners of this certification have a fundamental understanding of IT services and their uses in the AWS Cloud. They demonstrated cloud fluency and foundational AWS knowledge.',
+    credentialUrl: 'https://www.credly.com/badges/8918e5f0-88f6-4939-9142-12972f02e06c',
+  },
+  {
+    title: 'Professional Scrum Master™ I (PSM I)',
+    issuer: 'Scrum.org',
+    issueDate: '01 Sep 2021',
+    expiryDate: '',
+    description: 'Those who earn the globally recognized Professional Scrum Master I (PSM I) certification have demonstrated a fundamental level of Scrum mastery, including the concepts of applying Scrum, and proven an understanding of Scrum as described in the Scrum Guide. This individual has also demonstrated a consistent use of terminology and approach to Scrum.',
+    credentialUrl: 'https://www.credly.com/badges/fffb1d2c-f2aa-4de5-bec7-74ace458ac60',
+  },
 ]
 
 export const educations = [
