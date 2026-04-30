@@ -10,10 +10,9 @@
     "test": "vitest run",
     "test:watch": "vitest"
   },
-  "license": "GPL-3.0",
   "dependencies": {
     "react": "^19.2.5",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.2.5"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.6.3",
