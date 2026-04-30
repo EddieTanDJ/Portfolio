@@ -54,19 +54,39 @@ export const aboutParagraphs = [
 ]
 
 export const skills = [
-  'Software Development Life Cycle (SDLC)',
-  'OutSystems',
-  'COBOL',
-  'Java',
-  'Spring Boot',
-  'Android Development',
-  'Business Analysis',
-  'Full-Stack Development',
-  'Data Analysis',
-  'Data Visualization',
-  'AWS',
-  'Agile Methodologies',
-].map((name) => ({ name }))
+  {
+    category: 'Enterprise Development',
+    skills: [
+      'Java',
+      'Spring Boot',
+      'OutSystems',
+      'COBOL',
+    ],
+  },
+  {
+    category: 'Engineering Practices',
+    skills: [
+      'Software Development Life Cycle (SDLC)',
+      'Agile Methodologies',
+      'Business Analysis',
+    ],
+  },
+  {
+    category: 'Application Development',
+    skills: [
+      'Full-Stack Development',
+      'Android Development',
+    ],
+  },
+  {
+    category: 'Data and Cloud',
+    skills: [
+      'AWS',
+      'Data Analysis',
+      'Data Visualization',
+    ],
+  },
+]
 
 export const experiences = [
   {

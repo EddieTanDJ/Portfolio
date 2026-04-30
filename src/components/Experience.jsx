@@ -12,7 +12,7 @@ export function Experience({ items }) {
     <section id="experience" className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
       <SectionHeading
         eyebrow="Work Experiences"
-        title="My work experiences across multiple industries and roles."      />
+        title="My work experiences across multiple industries and roles"      />
       <div className="mt-12 grid gap-6">
         {items.map((item) => (
           <article
