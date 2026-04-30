@@ -3,7 +3,7 @@
  * Responsive navigation bar with integrated theme switching and mobile-friendly menu.
  */
 import { useEffect, useState } from 'react'
-import { SURFACE_STYLES, compactThemeLabel, themeAriaLabel, themeLabel } from '../lib/theme'
+import { SURFACE_STYLES, themeAriaLabel } from '../lib/theme'
 import { useTheme } from '../context/ThemeContext'
 
 export function Header({ navItems, profileImage, resumeUrl }) {

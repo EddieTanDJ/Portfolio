@@ -48,7 +48,7 @@ export function Skills({ items }) {
           <div className="flex flex-col gap-4 border-b pb-6 md:flex-row md:items-end md:justify-between">
             <div>
               <h2 className={`font-display text-4xl ${isDark ? SURFACE_STYLES.text.dark : SURFACE_STYLES.text.light}`}>
-                Key Skills and  Technical Expertise
+                Key Skills and Technical Expertise
               </h2>
               <p className={`mt-3 max-w-4xl text-base leading-7 md:text-lg ${isDark ? SURFACE_STYLES.mutedText.dark : SURFACE_STYLES.mutedText.light}`}>
                 Technologies I use across enterprise delivery, personal builds, and day-to-day engineering.
