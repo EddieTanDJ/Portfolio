@@ -4,6 +4,22 @@
 
 ## [Demo Link](https://dopefolio.netlify.app) 🔗
 
+## Project Configuration
+
+### Web3Forms key
+
+This project expects the Web3Forms access key to be provided at build time.
+
+1. Create a `.env` file in the project root.
+2. Add `VITE_WEB3FORMS_ACCESS_KEY=your_web3forms_access_key`.
+3. Restart the Vite dev server after updating environment variables.
+
+Security note:
+
+- Web3Forms keys are used client-side for this integration and can be publicly visible in built assets.
+- Restrict allowed origins/domains in your Web3Forms dashboard to prevent abuse (spam/quota exhaustion).
+- Rotate the key immediately if it was previously committed or exposed.
+
 <div align="center">
   <img src="https://i.postimg.cc/CxZXqhWM/ezgif-com-video-to-gif-1.gif" alt="Dopefolio Demo" width="100%" />
   <br>

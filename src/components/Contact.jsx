@@ -21,6 +21,7 @@ export function Contact({ formConfig }) {
    */
   const [errors, setErrors] = useState({})
   const { isDark } = useTheme()
+  const hasAccessKey = Boolean(formConfig.accessKey)
 
   // Derived state to check if the overall form is currently valid.
   const isValid = useMemo(() => Object.keys(errors).length === 0, [errors])
@@ -137,10 +138,16 @@ export function Contact({ formConfig }) {
             onChange={handleChange}
           />
 
+          {!hasAccessKey ? (
+            <p className={`rounded-2xl border px-5 py-4 text-sm ${isDark ? 'border-clay/40 bg-clay/10 text-mist' : 'border-clay/30 bg-clay/5 text-ink'}`}>
+              Contact form is not configured yet. Set VITE_WEB3FORMS_ACCESS_KEY in your environment.
+            </p>
+          ) : null}
+
           <button
             type="submit"
             className={`inline-flex w-fit items-center justify-center rounded-full px-7 py-4 text-sm font-semibold uppercase tracking-[0.28em] transition hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-70 ${isDark ? 'bg-gold text-night hover:bg-clay hover:text-sand' : 'bg-ink text-sand hover:bg-ink/90'}`}
-            disabled={!isValid && Object.values(values).some((value) => value)}
+            disabled={(!isValid && Object.values(values).some((value) => value)) || !hasAccessKey}
           >
             Send Message
           </button>

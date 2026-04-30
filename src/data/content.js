@@ -1,7 +1,7 @@
 /**
  * @typedef {{ label: string, href: string }} NavItem
  * @typedef {{ label: string, href: string, icon: string }} SocialLink
- * @typedef {{ name: string }} SkillItem
+ * @typedef {{ category: string, skills: string[] }} SkillGroup
  * @typedef {{ role: string, company: string, period: string, highlights: string[] }} ExperienceItem
  * @typedef {{ title: string, description: string, image: string, tags: string[], links?: { label: string, href: string }[] }} ProjectItem
  */
@@ -177,7 +177,7 @@ export const projects = [
 
 export const contactForm = {
   endpoint: 'https://api.web3forms.com/submit',
-  accessKey: 'ab6bb530-0c92-4759-ae15-a4c83146458f',
+  accessKey: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY ?? '',
   subject: 'Portfolio Contact Form',
   redirect: 'https://eddietandj.github.io/Portfolio/',
   fromName: 'Eddie Portfolio',

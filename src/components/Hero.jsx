@@ -13,7 +13,6 @@ export function Hero({ hero, socialLinks }) {
   const [displayedText, setDisplayedText] = useState('')
   const [isDeleting, setIsDeleting] = useState(false)
   const { isDark } = useTheme()
-  const [count, setCount] = useState(0)
 
   /**
    * Orchestrates the typing/deleting animation cycle for the "I am a ..." section.

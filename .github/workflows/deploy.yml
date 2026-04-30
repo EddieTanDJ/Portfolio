@@ -17,6 +17,8 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      VITE_WEB3FORMS_ACCESS_KEY: ${{ secrets.VITE_WEB3FORMS_ACCESS_KEY }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,6 +34,13 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+
+      - name: Validate Web3Forms key
+        run: |
+          if [ -z "$VITE_WEB3FORMS_ACCESS_KEY" ]; then
+            echo "Missing secret: VITE_WEB3FORMS_ACCESS_KEY"
+            exit 1
+          fi
 
       - name: Build
         run: npm run build
